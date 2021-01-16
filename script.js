@@ -1,34 +1,12 @@
-// Initial setup for populate() function
+// Initial setup for update() function
 let currentNumber = "0", storedNumber = "", operator = "", digit = "";
 let displayDiv = document.querySelector("#display");
-let keys = document.querySelectorAll("button");
-keys.forEach(key => {
-    key.addEventListener("click", populate);
+let buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener("click", update);
 });
 
-function operate(operator, stored, current) {
-    // If there isn't a stored number yet, return current number so it will become stored number
-    if (stored === "") return current;
-
-    // Conversion happens after checking that a === ""; if a was converted first, it would be 
-    // indistinguishable from 0, which could be a stored number
-    stored = +stored, current = +current;
-
-    switch(operator) {
-        case "+":
-            return stored + current;
-        case "−":
-            return stored - current;
-        case "×":
-            return stored * current;
-        case "÷":
-            return (current === 0) ? "ERROR" : stored / current;
-        case "=":
-            return current;
-    }
-}
-
-function populate(e) {
+function update(e) {
     let classList = e.target.classList;
     if (classList.contains("digit-key")) {
         digit = e.target.textContent;
@@ -59,6 +37,28 @@ function populate(e) {
         else if (currentNumber === "-0") currentNumber = "0";
         else currentNumber = (currentNumber *= -1).toString();
         display(currentNumber);
+    }
+}
+
+function operate(operator, stored, current) {
+    // If there isn't a stored number yet, return current number so it will become stored number
+    if (stored === "") return current;
+
+    // Conversion happens after checking that a === ""; if a was converted first, it would be 
+    // indistinguishable from 0, which could be a stored number
+    stored = +stored, current = +current;
+
+    switch(operator) {
+        case "+":
+            return stored + current;
+        case "−":
+            return stored - current;
+        case "×":
+            return stored * current;
+        case "÷":
+            return (current === 0) ? "ERROR" : stored / current;
+        case "=":
+            return current;
     }
 }
 
