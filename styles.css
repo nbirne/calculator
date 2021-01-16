@@ -1,0 +1,57 @@
+body {
+    text-align: center;
+    background-color: #F8FFE5;
+}
+
+button {
+    border: none;
+    font-size: 20px;
+}
+
+button:hover {
+    /* Technique for shading: https://stackoverflow.com/a/26073962/14915064 */
+    box-shadow: inset 0 0 80px 80px rgba(255, 255, 255, 0.1);
+}
+
+button:focus {
+    outline: 1px solid #FFC43D;
+}
+
+.large {
+    grid-column: span 2;
+}
+
+.digit-key, .decimal-key, .sign-key {
+    background-color: #06D6A0;
+}
+
+.operator-key {
+    background-color: #7FEBC3;
+}
+
+#equals-key, .clear-key {
+    background-color: #7FEBC3;
+}
+
+#calculator-grid {
+    border: 1px solid #1B9AAA;
+    grid-gap: 1px;
+    display: grid;
+    grid-template-rows: 1.25fr repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    width: 400px;
+    line-height: 90px;
+
+    /*center the grid vertically and horizontally*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#display {
+    grid-column: 1 / 5;
+    background-color: #1B9AAA;
+    color: #F8FFE5; 
+    font-size: 45px;
+}
